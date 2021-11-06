@@ -1,5 +1,5 @@
 //your code here
-Particle [] star = new Particle[300];
+Particle [] star = new Particle[500];
 
 void setup()
 {
@@ -8,7 +8,7 @@ void setup()
   size(600, 600);
   for (int i = 0; i < star.length; i++)
     star[i] = new Particle();
-  for (int i = 10; i < star.length; i++)
+  for (int i = 400; i < star.length; i++)
     star[i] = new OddballParticle();
 }
 void draw()
@@ -34,14 +34,14 @@ class Particle
     redColor = 225;
     greenColor = 225;
     blueColor = 225;
-    mySize = (float)(Math.random()*5)+2;
+    mySize = (float)(Math.random()*4)+1;
   }
   void move() {
     if (myX > 600) {
       myX = 300;
       myY = 300;
       myAngle = Math.random()*2*Math.PI;
-      mySpeed = Math.random()*2;
+      mySpeed = (Math.random()*2)+1;
     } else if (myY > 600) {
       myY = 300;
       myX = 300;
@@ -63,11 +63,15 @@ class OddballParticle extends Particle//inherits from Particle
     OddballParticle() {
       myX = 300;
       myY = 300;
-      mySpeed = Math.random()*2;
+      mySpeed = 0;
       myAngle = Math.random()*2*Math.PI;
-      redColor = (int)(Math.random()*50);
-      greenColor = (int)(Math.random()*50);
-      blueColor = 150;
-      mySize = (float)(Math.random()*5)+2;
+      redColor = 255;
+      greenColor = 255;
+      blueColor = (int)(Math.random()*50)+200;
+      mySize = (float)(Math.random()*4)+1;
+    }
+    void move() {
+      myX = myX + (Math.random()*6)-3;
+      myY = myY + (Math.random()*6)-3;
     }
 }
